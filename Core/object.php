@@ -1,20 +1,39 @@
 <?php
-class Mobile
+class Cha
 {
-    public $model;
-    function Test1($model)
+    public $tong;
+    public $c = 5;
+    function Tong($a, $b)
     {
-        echo $model."</br>";
-    }
-
-    function __destruct()
-    {
-        echo "Da vao Destruct";
+        $this->tong = $a+$b;
+        echo "Tong: $this->tong";
     }
 
 }
-
-$A = new Mobile;
-$A->Test1("Day la test");
-
+class Con extends Cha
+{
+    function NhanDoi(){
+        echo "Gia tri phep nhan doi: ".$this->tong*2;
+    }
+}
+class Chau extends Cha
+{
+    function NhanBa(){
+        echo "Gia tri phep nhan ba: ".$this->tong*3;
+    }
+}
+class HT extends Cha
+{
+    function HT1(){
+        echo "Class HT";
+    }
+}
+$cha1 = new Cha;
+$cha1->Tong(2,5);
+$con1 = new Con;
+$con1->Tong(5,7);
+$chau1 = new Chau;
+$chau1->Tong(10,4);
+$h1 = new HT;
+$h1->Tong(5,5);
 ?>
