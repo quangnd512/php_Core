@@ -1,11 +1,12 @@
 <?php
-class Caculator
-{
-    public function Sum($a, $b){
-        $c = $a + $b;
-        return $c;
-    }
-}
 
-$calc = new Caculator;
-echo $calc->Sum(4,5);
+$a = 10;
+$c = 'welcome';
+
+$str = '$c cac ban da den voi lop $a';
+echo $str;
+
+eval("\$str1 = \"$str\";");
+echo $str1;
+
+?>
