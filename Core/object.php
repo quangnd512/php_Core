@@ -1,12 +1,10 @@
 <?php
 
-$a = 10;
-$c = 'welcome';
+$a = "12,4";
+$b = "13,5";
 
-$str = '$c cac ban da den voi lop $a';
-echo $str;
+$c = str_replace( ",", ".", $a);
+$d = str_replace( ",", ".", $b);
 
-eval("\$str1 = \"$str\";");
-echo $str1;
-
-?>
+$sum = $c+$d;
+echo $sum;
