@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<leanxml>
+    <monhoc noihoc="youtube">
+        <thoigian>3 tieng</thoigian>
+        <congcu>laptop</congcu>
+    </monhoc>
+
+    <monhoc>
+        <thoigian>4 tieng</thoigian>
+        <congcu>laptop 2</congcu>
+    </monhoc>
+</leanxml>
