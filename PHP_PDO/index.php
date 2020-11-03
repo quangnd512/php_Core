@@ -41,7 +41,7 @@
             <table class="table table-striped table-hover">
                 <thead>
                     <tr>
-                    <th scope="col">IDs</th>
+                    <th scope="col">ID</th>
                     <th scope="col">Name</th>
                     <th scope="col">Type</th>
                     <th scope="col">Pages</th>
@@ -57,7 +57,7 @@
                         $books = $objBook->getAllBooks();
                         foreach ($books as $book) {
                             echo "<tr>";
-                                echo "<th scope='row'>".$book['id']."</th>";
+                                echo "<th scope='row' name='id'>".$book['id']."</th>";
                                 echo "<td>".$book['name']."</td>";
                                 echo "<td>".$book['type']."</td>";
                                 echo "<td>".$book['pages']."</td>";
@@ -65,9 +65,15 @@
                                 echo "<td>".$book['auther']."</td>";
                     ?>
                                 <td>
-                                    <a href="View/view.php"><button class="btn btn-primary btn-sm">View</button></a>
-                                    <a href="View/edit.php"><button class="btn btn-outline-primary btn-sm">Edit</button></a>
-                                    <button class="btn btn-sm">Delete</button>
+                                    <a href="View/view.php?id=<?php echo $book['id'] ?>">
+                                        <button class="btn btn-primary btn-sm">View</button>
+                                    </a>
+                                    <a href="View/edit.php?id=<?php echo $book['id'] ?>"><button class="btn btn-outline-primary btn-sm">Edit</button></a>
+                                    <form style="display: inline;" method="post" action="Action.php">
+                                        <input type="hidden" class="form-control" id="name" name="Iid" 
+                                            value="<?php echo $book['id']; ?>">
+                                        <button class="btn btn-sm" type="submit" name="submit" value="delete">Delete</button>
+                                    </form>
                                 </td>
                     <?php
                             echo "</tr>";

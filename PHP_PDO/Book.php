@@ -66,11 +66,43 @@ class Book
         }
     }
 
+
+    public function edit()
+    {
+        $sql = "UPDATE $this->tableName SET name = :name, type = :type, pages = :pages, 
+        price = :price, auther = :auther WHERE id = :id";
+        $stmp = $this->dbConn->prepare($sql);
+        $stmp->bindParam(':name',$this->name);
+        $stmp->bindParam(':type',$this->type);
+        $stmp->bindParam(':pages',$this->pages);
+        $stmp->bindParam(':price',$this->price);
+        $stmp->bindParam(':auther',$this->auther);
+        $stmp->bindParam(':id',$this->id);
+        if ($stmp->execute()) {
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public function delete()
+    {
+        $sql = "DELETE FROM $this->tableName WHERE id = :id";
+        $stmp = $this->dbConn->prepare($sql);
+        $stmp->bindParam(':id',$this->id);
+        if ($stmp->execute()) {
+            return true;
+        }else{
+            return false;
+        }
+    }
+
     public function getAllBooks()
     {
         $stmp = $this->dbConn->prepare("SELECT * FROM $this->tableName");
         $stmp->execute();
         $books = $stmp->fetchAll(PDO::FETCH_ASSOC);
+        // return print_r($books); exit;
         return $books;
     }
 }

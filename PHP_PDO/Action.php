@@ -20,6 +20,32 @@ class Action
                 }
                 break;
             
+            case 'edit':
+                $objBook = new Book;
+                $objBook->setId($_POST['Iid']);
+                $objBook->setName($_POST['Iname']);
+                $objBook->setType($_POST['Itype']);
+                $objBook->setPages($_POST['Ipages']);
+                $objBook->setPrice($_POST['Iprice']);
+                $objBook->setAuther($_POST['Iauther']);
+                $objBook->setCreated_date(date('Y-m-d H:i:s'));
+                if ($objBook->edit()) {
+                    header('location: index.php?edit=1');
+                }else{
+                    header('location: index.php?edit=0');
+                }
+                break;
+
+            case 'delete':
+                $objBook = new Book;
+                $objBook->setId($_POST['Iid']);
+                if ($objBook->delete()) {
+                    header('location: index.php?delete=1');
+                }else{
+                    header('location: index.php?delete=0');
+                }
+                break;
+
             default:
                 header('location: index.php');
                 break;

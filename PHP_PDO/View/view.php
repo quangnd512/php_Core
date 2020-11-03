@@ -18,23 +18,16 @@
     <div class="container pt-4 pb-4">
         <nav class="navbar navbar-expand-lg navbar-light bg-light rounded">
             <a class="navbar-brand" href="#">HTML CRUD Template</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample09" aria-controls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
     
             <div class="collapse navbar-collapse" id="navbarsExample09">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="../index.php">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="create.html">Create</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">FAQ</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="https://pisyek.com/contact">Help</a>
+                        <a class="nav-link" href="create.php">Create</a>
                     </li>
                 </ul>
                 <form class="form-inline my-2 my-md-0">
@@ -46,19 +39,28 @@
         
     <main role="main" class="flex-shrink-0">
         <div class="container">
+        <?php 
+            require_once("../Book.php");
+            $objBook = new Book;
+            $books = $objBook->getAllBooks();
+            foreach ($books as $book) {
+                if ($book['id']==$_GET['id']) {
+        ?>
             <h1>View User Detail</h1>
-            <p>Name: Pisyek</p>
-            <p>Email: pisyek@gmail.com</p>
+            <p>Name: <?php echo $book['name']; ?></p>
+            <p>Type: <?php echo $book['type']; ?></p>
+            <p>Pages: <?php echo $book['pages']; ?></p>
+            <p>Price: <?php echo $book['price']; ?></p>
+            <p>Auther: <?php echo $book['auther']; ?></p>
+            <a href="edit.php?id=<?php echo $book['id'] ?>"><button class="btn btn-outline-primary btn-sm">Edit</button></a>
+            <button class="btn btn-sm">Delete</button>
+        <?php
+            } }
+        ?>
         </div>
     </main>
       
     <footer class="footer mt-auto py-3">
-        <div class="container pb-5">
-            <hr>
-            <span class="text-muted">
-                    Copyright &copy; 2019 | <a href="https://pisyek.com">Pisyek.com</a>
-            </span>
-        </div>
     </footer>
 
     
